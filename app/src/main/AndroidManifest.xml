@@ -45,34 +45,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name="fathi.shakhes.LoginDorm"
-            android:screenOrientation="portrait"
-            android:theme="@style/BlackTheme" />
-        <activity
             android:name="fathi.shakhes.LoginFood"
             android:screenOrientation="portrait"
             android:theme="@style/BlackTheme" />
-
-        <activity
-            android:name="fathi.shakhes.loginShareBook.LoginShareBook"
-            android:screenOrientation="portrait"
-            android:theme="@style/BlackTheme" />
-        <activity
-            android:name="fathi.shakhes.loginShareBook.RestorePasswordShareBook"
-            android:screenOrientation="portrait"
-            android:theme="@style/BlackTheme" />
-
-        <activity
-            android:name="fathi.shakhes.loginShareBook.RegisterShareBook"
-            android:screenOrientation="portrait"
-            android:theme="@style/BlackTheme" />
-
-        <activity
-            android:name="fathi.shakhes.loginShareBook.OpenLogSharebook"
-            android:noHistory="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-
 
         <activity
             android:name="fathi.shakhes.FoodActivity"
@@ -87,19 +62,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="fathi.shakhes.DormActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="fathi.shakhes.BehdashtListActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="fathi.shakhes.DormListActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="fathi.shakhes.NewsActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name="fathi.shakhes.FoodTableTab.TabTable"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -107,18 +69,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="fathi.shakhes.FoodMessageTab.TabMessage"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="fathi.shakhes.GuestActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="fathi.shakhes.TasisatActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="fathi.shakhes.OtherListActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="fathi.shakhes.RefahListActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="fathi.shakhes.SingleNewsActivity"
