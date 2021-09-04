@@ -5,9 +5,6 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.core.widget.CompoundButtonCompat;
 import android.text.Html;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -17,6 +14,10 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.core.widget.CompoundButtonCompat;
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -32,7 +33,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Iterator;
 
-import fathi.shakhes.AppSessionManager;
 import fathi.shakhes.MainApplication;
 import fathi.shakhes.helpers.PersianDateConverter;
 import shakhes.R;
@@ -43,7 +43,6 @@ public class Reserved extends Fragment  {
     Typeface typeFace;
     String url_food_table_reserve = "https://dining.sharif.ir/api/reserve-status-text?access_token=";
     View rootView;
-    AppSessionManager sessions;
     String token;
     TextView waiting , food_plan ;
     TextView[] days, food_name, meal_name, titles;
@@ -56,7 +55,6 @@ public class Reserved extends Fragment  {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        sessions = new AppSessionManager(getActivity().getApplicationContext());
         typeFace = Typeface.createFromAsset(getActivity().getAssets(), "fonts/IRANSans.ttf");
         rootView = inflater.inflate(R.layout.food_table_child_reserved,
                 container, false);
@@ -164,7 +162,7 @@ public class Reserved extends Fragment  {
         );
 
         jsonObjReq.setShouldCache(false);
-        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.Companion.getInstance().addToRequestQueue(jsonObjReq);
 
     }
 
@@ -198,7 +196,7 @@ public class Reserved extends Fragment  {
         };
         jsonObjReq.setShouldCache(false);
 
-        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.Companion.getInstance().addToRequestQueue(jsonObjReq);
 
     }
 
@@ -247,7 +245,7 @@ public class Reserved extends Fragment  {
         };
 
         jsonObjReq.setShouldCache(false);
-        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.Companion.getInstance().addToRequestQueue(jsonObjReq);
     }
 
     private class MyTask extends AsyncTask<String, Integer, String> {

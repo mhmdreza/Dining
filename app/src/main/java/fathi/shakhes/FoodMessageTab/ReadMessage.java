@@ -5,11 +5,6 @@ import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AlertDialog;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +16,12 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -37,33 +38,32 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import fathi.shakhes.AppSessionManager;
-import fathi.shakhes.helpers.JalaliCalendar;
 import fathi.shakhes.MainApplication;
+import fathi.shakhes.helpers.JalaliCalendar;
 import shakhes.R;
 
 public class ReadMessage extends Fragment {
-    JalaliCalendar calendar ;
-    TextView plain_body,plain_date ,nomessage_text,delete_message;
-    View rootView ;
-    AppSessionManager sessions ;
-    Typeface typeFace ;
-    String token ;
-    String[] titles , bodies , sentDates ,date_food,time_food , titles_tmp,id_tmp;
-    Boolean [] reads ;
+    JalaliCalendar calendar;
+    TextView plain_body, plain_date, nomessage_text, delete_message;
+    View rootView;
+    Typeface typeFace;
+    String token;
+    String[] titles, bodies, sentDates, date_food, time_food, titles_tmp, id_tmp;
+    Boolean[] reads;
     String url_food_messages = "https://dining.sharif.ir/api/messages?access_token=";
-    String url_food_delete   = "https://dining.sharif.ir/api/delete-message?access_token=";
-    int message_id[] ;
-    ArrayList<String> ReadList , ReadId ;
-    ListView listView ;
-    public static ReadMessage newInstance(){
+    String url_food_delete = "https://dining.sharif.ir/api/delete-message?access_token=";
+    int message_id[];
+    ArrayList<String> ReadList, ReadId;
+    ListView listView;
+
+    public static ReadMessage newInstance() {
         return new ReadMessage();
     }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        sessions = new AppSessionManager(getActivity().getApplicationContext());
         ReadList = new ArrayList<String>();
         ReadId = new ArrayList<String>();
         typeFace = Typeface.createFromAsset(getActivity().getAssets(), "fonts/IRANSans.ttf");
@@ -76,32 +76,33 @@ public class ReadMessage extends Fragment {
         getMessages();
         return rootView;
     }
-    public  void getMessages() {
+
+    public void getMessages() {
         JsonArrayRequest jsonObjReq = new JsonArrayRequest(Request.Method.POST,
                 url_food_messages + token, null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         message_id = new int[response.length()];
-                        titles = new String[response.length()] ;
-                        bodies = new String[response.length()] ;
-                        sentDates = new String[response.length()] ;
-                        reads = new Boolean[response.length()] ;
+                        titles = new String[response.length()];
+                        bodies = new String[response.length()];
+                        sentDates = new String[response.length()];
+                        reads = new Boolean[response.length()];
                         date_food = new String[response.length()];
                         time_food = new String[response.length()];
-                        for (int i = 0; i <response.length() ; i++) {
+                        for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject message_number = response.getJSONObject(i);
                                 reads[i] = message_number.getBoolean("read");
                                 titles[i] = message_number.getString("title");
                                 bodies[i] = Html.fromHtml(message_number.getString("body")).toString();
                                 sentDates[i] = message_number.getString("sentDate");
-                                message_id[i]=message_number.getInt("id");
+                                message_id[i] = message_number.getInt("id");
                                 String[] splited = sentDates[i].split("\\s+");
                                 calendar = new JalaliCalendar(changetohejri(splited[0]));
                                 date_food[i] = calendar.date + " " + calendar.strMonth + " " + calendar.year;
                                 time_food[i] = splited[1];
-                                if (reads[i] == true){
+                                if (reads[i] == true) {
                                     ReadList.add(titles[i]);
                                     ReadId.add(String.valueOf(message_id[i]));
                                 }
@@ -113,46 +114,44 @@ public class ReadMessage extends Fragment {
                         }
                         titles_tmp = ReadList.toArray(new String[ReadList.size()]);
                         id_tmp = ReadId.toArray(new String[ReadId.size()]);
-                        if (titles_tmp.length != 0){
+                        if (titles_tmp.length != 0) {
 
-                                nomessage_text.setVisibility(View.GONE);
-                                listView.setVisibility(View.VISIBLE);
+                            nomessage_text.setVisibility(View.GONE);
+                            listView.setVisibility(View.VISIBLE);
 
-                                ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(),
-                                        R.layout.food_message_listview, titles_tmp)
+                            ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(),
+                                    R.layout.food_message_listview, titles_tmp) {
+                                @NonNull
+                                @Override
+                                public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                                    View view = super.getView(position, convertView, parent);
+                                    TextView textview = (TextView) view;
+                                    textview.setTypeface(typeFace);
+                                    return textview;
+                                }
+                            };
 
-                                {
-                                    @NonNull
-                                    @Override
-                                    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-                                        View view = super.getView(position, convertView, parent);
-                                        TextView textview = (TextView) view;
-                                        textview.setTypeface(typeFace);
-                                        return textview;
-                                    }
-                                };
+                            listView.setAdapter(adapter);
 
-                                listView.setAdapter(adapter);
+                            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    AlertNews(bodies[position], date_food[position] + "\n" + time_food[position]);
+                                }
+                            });
 
-                                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                    @Override
-                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                        AlertNews(bodies[position],date_food[position]+"\n" + time_food[position]);
-                                    }
-                                });
-
-                                listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                                    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-                                    @Override
-                                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                                     AlertNewsDelete(position);
-                                        return true;
-                                    }
-                                });
+                            listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                                @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+                                @Override
+                                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                                    AlertNewsDelete(position);
+                                    return true;
+                                }
+                            });
 
 
-                            }
                         }
+                    }
 
 
                 }, new Response.ErrorListener() {
@@ -163,9 +162,10 @@ public class ReadMessage extends Fragment {
             }
         });
 
-        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.Companion.getInstance().addToRequestQueue(jsonObjReq);
     }
-    public  void DeleteMessages(String message_id) {
+
+    public void DeleteMessages(String message_id) {
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
                 url_food_delete + token + "&id=" + message_id, null,
                 new Response.Listener<JSONObject>() {
@@ -173,9 +173,9 @@ public class ReadMessage extends Fragment {
                     public void onResponse(JSONObject response) {
 
                         getActivity().finish();
-                        getActivity().overridePendingTransition( 0, 0);
+                        getActivity().overridePendingTransition(0, 0);
                         startActivity(getActivity().getIntent());
-                        getActivity().overridePendingTransition( 0, 0);
+                        getActivity().overridePendingTransition(0, 0);
 
 
                     }
@@ -187,11 +187,12 @@ public class ReadMessage extends Fragment {
             }
         });
 
-        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.Companion.getInstance().addToRequestQueue(jsonObjReq);
     }
+
     private void AlertNews(String body, String date) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                getActivity(),R.style.AppTheme_Dark_Dialog);
+                getActivity(), R.style.AppTheme_Dark_Dialog);
         // set dialog message
         alertDialogBuilder
                 .setView(R.layout.foodmessage_plain)
@@ -207,8 +208,8 @@ public class ReadMessage extends Fragment {
         // show it
         alertDialog.show();
 
-        plain_body=alertDialog.findViewById(R.id.foodmessage_plain_body);
-        plain_date=alertDialog.findViewById(R.id.foodmessage_plain_date);
+        plain_body = alertDialog.findViewById(R.id.foodmessage_plain_body);
+        plain_date = alertDialog.findViewById(R.id.foodmessage_plain_date);
 
         plain_body.setTypeface(typeFace);
         plain_body.setText(body);
@@ -220,11 +221,12 @@ public class ReadMessage extends Fragment {
         Window window = alertDialog.getWindow();
         window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
     }
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @SuppressLint("WrongConstant")
     private void AlertNewsDelete(final int position) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                getActivity(),R.style.AppTheme_Dark_Dialog);
+                getActivity(), R.style.AppTheme_Dark_Dialog);
         // set dialog message
         alertDialogBuilder
                 .setView(R.layout.foodmessage_delete)
@@ -249,7 +251,7 @@ public class ReadMessage extends Fragment {
         // show it
         alertDialog.show();
 
-        delete_message= alertDialog.findViewById(R.id.deletemessage_text);
+        delete_message = alertDialog.findViewById(R.id.deletemessage_text);
 
         delete_message.setTypeface(typeFace);
 
@@ -263,14 +265,15 @@ public class ReadMessage extends Fragment {
         LinearLayout.LayoutParams layoutParamsNegative = (LinearLayout.LayoutParams) btnNegative.getLayoutParams();
 
 
-        layoutParamsPositive.setMargins(10,0,0,0);
+        layoutParamsPositive.setMargins(10, 0, 0, 0);
 
         btnPositive.setLayoutParams(layoutParamsPositive);
 
         Window window = alertDialog.getWindow();
         window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
     }
-    private Date changetohejri(String gregorianData){
+
+    private Date changetohejri(String gregorianData) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date convertedCurrentDate = null;
         try {

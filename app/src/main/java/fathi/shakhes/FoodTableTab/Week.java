@@ -38,7 +38,6 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
-import fathi.shakhes.AppSessionManager;
 import fathi.shakhes.MainApplication;
 import shakhes.R;
 
@@ -58,7 +57,6 @@ public class Week extends Fragment {
     View child;
     TextView[] days, food_name, meal_name, titles;
     View rootView;
-    AppSessionManager sessions;
     String[] day_name, day_date, meal, food_name_table, food_id_table;
     List<String> categories;
     Spinner spinner;
@@ -73,7 +71,6 @@ public class Week extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        sessions = new AppSessionManager(getActivity().getApplicationContext());
         typeFace = Typeface.createFromAsset(getActivity().getAssets(), "fonts/IRANSans.ttf");
         rootView = inflater.inflate(R.layout.activity_food_table_week,
                 container, false);
@@ -233,7 +230,7 @@ public class Week extends Fragment {
 
         );
 
-        MainApplication.getInstance().addToRequestQueue(check);
+        MainApplication.Companion.getInstance().addToRequestQueue(check);
         food_name_table[j] = "";
 
     }
@@ -393,7 +390,7 @@ public class Week extends Fragment {
         };
         jsonObjReq.setShouldCache(false);
 
-        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.Companion.getInstance().addToRequestQueue(jsonObjReq);
 
     }
 
@@ -427,7 +424,7 @@ public class Week extends Fragment {
 
         jsonObjReq.setShouldCache(false);
 
-        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.Companion.getInstance().addToRequestQueue(jsonObjReq);
 
         parent.setVisibility(View.GONE);
         wating_week.setVisibility(View.VISIBLE);
@@ -529,7 +526,7 @@ public class Week extends Fragment {
         };
         jsonObjReq.setShouldCache(false);
 
-        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.Companion.getInstance().addToRequestQueue(jsonObjReq);
 
     }
 

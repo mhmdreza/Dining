@@ -4,10 +4,6 @@ package fathi.shakhes.FoodMessageTab;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AlertDialog;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +13,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -32,10 +34,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import fathi.shakhes.AppSessionManager;
-import fathi.shakhes.helpers.JalaliCalendar;
-
 import fathi.shakhes.MainApplication;
+import fathi.shakhes.helpers.JalaliCalendar;
 import shakhes.R;
 
 
@@ -45,7 +45,6 @@ public class UnreadMessage extends Fragment {
     JalaliCalendar calendar ;
     TextView plain_body,plain_date ,nomessage_text;
     View rootView ;
-    AppSessionManager sessions ;
     Typeface typeFace ;
     String token ;
     String[] titles , bodies , sentDates ,date_food,time_food , titles_tmp , id_tmp;
@@ -62,7 +61,6 @@ public class UnreadMessage extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        sessions = new AppSessionManager(getActivity().getApplicationContext());
          UReadList = new ArrayList<String>();
          UReadId = new ArrayList<String>();
         typeFace = Typeface.createFromAsset(getActivity().getAssets(), "fonts/IRANSans.ttf");
@@ -96,7 +94,7 @@ public class UnreadMessage extends Fragment {
 
             }
         });
-        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.Companion.getInstance().addToRequestQueue(jsonObjReq);
     }
 
     public void getMessages() {
@@ -173,7 +171,7 @@ public class UnreadMessage extends Fragment {
             }
         });
 
-        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.Companion.getInstance().addToRequestQueue(jsonObjReq);
     }
 
     private void AlertNews(final String body, final String date,final int position) {

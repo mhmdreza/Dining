@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import fathi.shakhes.AppSessionManager;
+import fathi.shakhes.AppSharedPreferences;
 import fathi.shakhes.FoodActivity;
 import shakhes.R;
 
@@ -20,13 +20,11 @@ public class TabTable extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     String token;
-    AppSessionManager s ;
     Typeface typeface ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 //        new MyTask().execute("Trigger");
-        s = new AppSessionManager(getApplicationContext());
-        token = s.getDiningData().get("access_token");
+        token = AppSharedPreferences.INSTANCE.getDiningData().get("access_token");
         typeface = Typeface.createFromAsset(getAssets(), "fonts/IRANSans.ttf");
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,

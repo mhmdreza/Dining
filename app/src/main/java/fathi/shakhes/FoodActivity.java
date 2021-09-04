@@ -37,7 +37,6 @@ import shakhes.R;
 public class FoodActivity extends AppCompatActivity {
     TextView[] texts;
     String url_food_picture = "https://dining.sharif.ir/api/picture?access_token=";
-    AppSessionManager s;
     String token;
     Button[] foodmenu ;
     TextView toman ;
@@ -46,8 +45,7 @@ public class FoodActivity extends AppCompatActivity {
     Intent tabtable;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        s = new AppSessionManager(getApplicationContext());
-        token = s.getDiningData().get("access_token");
+        token = AppSharedPreferences.INSTANCE.getDiningData().get("access_token");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -142,7 +140,7 @@ public class FoodActivity extends AppCompatActivity {
         new MyTask().execute("get picture");
 
 
-        String[] data = s.getFoodProfileData();
+        String[] data = AppSharedPreferences.INSTANCE.getFoodProfileData();
         String[] data_temp = new String[3];
         data_temp[0] = data[0] +" "+ data[1] ;
 
@@ -152,7 +150,7 @@ public class FoodActivity extends AppCompatActivity {
         for (int i = 0; i < 3; i++) {
             texts[i].setText((data_temp[i]).trim());
         }
-        if(AppSessionManager.IsAccountNegative){
+        if(AppSharedPreferences.INSTANCE.isAccountNegative()){
             texts[2].setTextColor(Color.RED);
         }
         else {
@@ -239,14 +237,14 @@ public class FoodActivity extends AppCompatActivity {
             }
         };
 
-        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.Companion.getInstance().addToRequestQueue(jsonObjReq);
 
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        s.logout_dining();
+        AppSharedPreferences.INSTANCE.logoutDining();
         startActivity(new Intent(FoodActivity.this, MainActivity.class ));
         finish();
     }

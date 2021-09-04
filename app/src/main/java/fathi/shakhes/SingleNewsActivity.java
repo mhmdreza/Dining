@@ -119,7 +119,7 @@ public class SingleNewsActivity extends AppCompatActivity {
                     }
                 }, Throwable::printStackTrace);
 
-        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.Companion.getInstance().addToRequestQueue(jsonObjReq);
     }
 
     public Date getDateTimeFromTimestamp(Long value) {

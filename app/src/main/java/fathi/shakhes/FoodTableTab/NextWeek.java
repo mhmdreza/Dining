@@ -1,13 +1,10 @@
 package fathi.shakhes.FoodTableTab;
+
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.core.widget.CompoundButtonCompat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,20 +15,28 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.widget.CompoundButtonCompat;
+import androidx.fragment.app.Fragment;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
-import fathi.shakhes.AppSessionManager;
+
 import fathi.shakhes.MainApplication;
 import shakhes.R;
 
@@ -50,7 +55,6 @@ public class NextWeek extends Fragment {
     TextView[] days, food_name, meal_name, titles;
     TextView waiting_nextweek ;
     View rootView;
-    AppSessionManager sessions;
     String[] day_name, day_date, meal, food_name_table, food_id_table;
     List<String> categories;
     Spinner spinner;
@@ -65,7 +69,6 @@ public class NextWeek extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        sessions = new AppSessionManager(getActivity().getApplicationContext());
         typeFace = Typeface.createFromAsset(getActivity().getAssets(), "fonts/IRANSans.ttf");
         rootView = inflater.inflate(R.layout.activity_food_table_nextweek,
                 container, false);
@@ -242,7 +245,7 @@ public class NextWeek extends Fragment {
 
         );
 
-        MainApplication.getInstance().addToRequestQueue(check);
+        MainApplication.Companion.getInstance().addToRequestQueue(check);
         food_name_table[j] = "";
 
     }
@@ -396,7 +399,7 @@ public class NextWeek extends Fragment {
         };
         jsonObjReq.setShouldCache(false);
 
-        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.Companion.getInstance().addToRequestQueue(jsonObjReq);
 
     }
 
@@ -430,7 +433,7 @@ public class NextWeek extends Fragment {
 
         jsonObjReq.setShouldCache(false);
 
-        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.Companion.getInstance().addToRequestQueue(jsonObjReq);
 
         parent.setVisibility(View.GONE);
         waiting_nextweek.setVisibility(View.VISIBLE);
