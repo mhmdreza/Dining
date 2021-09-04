@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="shakhes"
+    android:label="Shakhes">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+    <application
+        android:name="fathi.shakhes.MySingleton"
+        android:allowBackup="true"
+        android:hardwareAccelerated="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name="fathi.shakhes.SplashScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="fathi.shakhes.MainActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name="fathi.shakhes.LoginDorm"
+            android:screenOrientation="portrait"
+            android:theme="@style/BlackTheme" />
+        <activity
+            android:name="fathi.shakhes.LoginFood"
+            android:screenOrientation="portrait"
+            android:theme="@style/BlackTheme" />
+
+        <activity
+            android:name="fathi.shakhes.loginShareBook.LoginShareBook"
+            android:screenOrientation="portrait"
+            android:theme="@style/BlackTheme" />
+        <activity
+            android:name="fathi.shakhes.loginShareBook.RestorePasswordShareBook"
+            android:screenOrientation="portrait"
+            android:theme="@style/BlackTheme" />
+
+        <activity
+            android:name="fathi.shakhes.loginShareBook.RegisterShareBook"
+            android:screenOrientation="portrait"
+            android:theme="@style/BlackTheme" />
+
+        <activity
+            android:name="fathi.shakhes.loginShareBook.OpenLogSharebook"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+
+        <activity
+            android:name="fathi.shakhes.FoodActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="fathi.shakhes.ContactUsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="fathi.shakhes.FoodListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="fathi.shakhes.DormActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="fathi.shakhes.BehdashtListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="fathi.shakhes.DormListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="fathi.shakhes.NewsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="fathi.shakhes.FoodTableTab.TabTable"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="fathi.shakhes.DaySaleFood"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="fathi.shakhes.FoodMessageTab.TabMessage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="fathi.shakhes.GuestActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="fathi.shakhes.TasisatActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="fathi.shakhes.OtherListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="fathi.shakhes.RefahListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="fathi.shakhes.SingleNewsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+    </application>
+</manifest>
