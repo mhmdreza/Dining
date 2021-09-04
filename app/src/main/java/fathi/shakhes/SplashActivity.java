@@ -27,14 +27,14 @@ public class SplashActivity extends AppCompatActivity {
             textView3.setTypeface(typeFace);
             handler = new Handler() ;
             handler.postDelayed(() -> {
-                Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+                Intent mainIntent = new Intent(SplashActivity.this, LoginFood.class);
                 SplashActivity.this.startActivity(mainIntent);
                 SplashActivity.this.finish();
             }, 1000);
           SplashHistory = false ;
         }
         else {
-            Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+            Intent mainIntent = new Intent(SplashActivity.this, LoginFood.class);
             SplashActivity.this.startActivity(mainIntent);
             SplashActivity.this.finish();
         }

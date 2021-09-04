@@ -38,11 +38,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name="fathi.shakhes.MainActivity"
-            android:noHistory="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name="fathi.shakhes.LoginFood"
