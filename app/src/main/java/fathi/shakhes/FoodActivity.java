@@ -247,7 +247,7 @@ public class FoodActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         s.logout_dining();
-        startActivity(new Intent(FoodActivity.this, SplashActivity.class ));
+        startActivity(new Intent(FoodActivity.this, MainActivity.class ));
         finish();
     }
 

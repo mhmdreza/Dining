@@ -237,7 +237,7 @@ public class LoginFood extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        Intent BackToMain = new Intent(LoginFood.this, SplashActivity.class);
+        Intent BackToMain = new Intent(LoginFood.this, MainActivity.class);
         startActivity(BackToMain);
         finish();
     }

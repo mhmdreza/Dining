@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment : Fragment {
+    constructor() : super()
+    constructor(contentLayoutId: Int) : super(contentLayoutId)
 }
 
 fun Fragment.navigateBack() {
