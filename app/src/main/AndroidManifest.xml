@@ -18,7 +18,7 @@
         android:smallScreens="true"
         android:xlargeScreens="true" />
     <application
-        android:name="fathi.shakhes.MySingleton"
+        android:name="fathi.shakhes.MainApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
