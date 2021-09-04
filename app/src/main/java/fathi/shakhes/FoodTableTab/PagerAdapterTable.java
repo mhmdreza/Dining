@@ -1,12 +1,10 @@
 package fathi.shakhes.FoodTableTab;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
-import fathi.shakhes.FoodMessageTab.UnreadMessage;
-import fathi.shakhes.FoodMessageTab.ReadMessage;
 import shakhes.R;
 
 

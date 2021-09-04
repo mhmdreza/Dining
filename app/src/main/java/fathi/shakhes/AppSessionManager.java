@@ -1,13 +1,12 @@
 package fathi.shakhes;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
-
 import java.util.HashMap;
-import java.util.Hashtable;
 
 public class AppSessionManager {
     // Shared Preferences

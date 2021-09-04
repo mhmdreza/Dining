@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout-hdpi/content_main.xml" value="0.475" />
+        <entry key="app/src/main/res/layout/action_bar.xml" value="0.17299898682877407" />
         <entry key="app/src/main/res/layout/activity_behdasht_list.xml" value="0.17299898682877407" />
         <entry key="app/src/main/res/layout/activity_dorm.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/activity_gallery.xml" value="0.19791666666666666" />
@@ -17,6 +18,7 @@
         <entry key="app/src/main/res/layout/content_main.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/content_news.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/content_other.xml" value="0.17299898682877407" />
+        <entry key="app/src/main/res/layout/layout_under_const_dorm.xml" value="0.17299898682877407" />
         <entry key="app/src/main/res/layout/login_sharebook.xml" value="0.16540020263424518" />
         <entry key="app/src/main/res/layout/register_sharebook.xml" value="0.17299898682877407" />
       </map>
