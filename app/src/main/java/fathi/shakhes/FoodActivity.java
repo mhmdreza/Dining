@@ -239,7 +239,7 @@ public class FoodActivity extends AppCompatActivity {
             }
         };
 
-        MySingleton.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
 
     }
 
@@ -247,7 +247,7 @@ public class FoodActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         s.logout_dining();
-        startActivity(new Intent(FoodActivity.this, SplashScreen.class ));
+        startActivity(new Intent(FoodActivity.this, SplashActivity.class ));
         finish();
     }
 

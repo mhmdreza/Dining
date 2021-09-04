@@ -33,8 +33,8 @@ import java.util.Calendar;
 import java.util.Iterator;
 
 import fathi.shakhes.AppSessionManager;
-import fathi.shakhes.MySingleton;
-import fathi.shakhes.PersianDateConverter;
+import fathi.shakhes.MainApplication;
+import fathi.shakhes.helpers.PersianDateConverter;
 import shakhes.R;
 
 public class Reserved extends Fragment  {
@@ -164,7 +164,7 @@ public class Reserved extends Fragment  {
         );
 
         jsonObjReq.setShouldCache(false);
-        MySingleton.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
 
     }
 
@@ -198,7 +198,7 @@ public class Reserved extends Fragment  {
         };
         jsonObjReq.setShouldCache(false);
 
-        MySingleton.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
 
     }
 
@@ -247,7 +247,7 @@ public class Reserved extends Fragment  {
         };
 
         jsonObjReq.setShouldCache(false);
-        MySingleton.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
     }
 
     private class MyTask extends AsyncTask<String, Integer, String> {

@@ -124,7 +124,7 @@ public class ContactUsActivity extends AppCompatActivity {
 
             }
         };
-        MySingleton.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
     }
 
     public void  onBackPressed() {

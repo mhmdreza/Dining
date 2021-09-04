@@ -32,7 +32,7 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import fathi.shakhes.AppSessionManager;
-import fathi.shakhes.MySingleton;
+import fathi.shakhes.MainApplication;
 import shakhes.R;
 
 public class NextWeek extends Fragment {
@@ -242,7 +242,7 @@ public class NextWeek extends Fragment {
 
         );
 
-        MySingleton.getInstance().addToRequestQueue(check);
+        MainApplication.getInstance().addToRequestQueue(check);
         food_name_table[j] = "";
 
     }
@@ -396,7 +396,7 @@ public class NextWeek extends Fragment {
         };
         jsonObjReq.setShouldCache(false);
 
-        MySingleton.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
 
     }
 
@@ -430,7 +430,7 @@ public class NextWeek extends Fragment {
 
         jsonObjReq.setShouldCache(false);
 
-        MySingleton.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
 
         parent.setVisibility(View.GONE);
         waiting_nextweek.setVisibility(View.VISIBLE);

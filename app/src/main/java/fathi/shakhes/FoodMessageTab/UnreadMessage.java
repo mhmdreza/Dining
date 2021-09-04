@@ -7,7 +7,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.core.content.res.TypedArrayUtils;
 import androidx.appcompat.app.AlertDialog;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -34,9 +33,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import fathi.shakhes.AppSessionManager;
-import fathi.shakhes.JalaliCalendar;
+import fathi.shakhes.helpers.JalaliCalendar;
 
-import fathi.shakhes.MySingleton;
+import fathi.shakhes.MainApplication;
 import shakhes.R;
 
 
@@ -97,7 +96,7 @@ public class UnreadMessage extends Fragment {
 
             }
         });
-        MySingleton.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
     }
 
     public void getMessages() {
@@ -174,7 +173,7 @@ public class UnreadMessage extends Fragment {
             }
         });
 
-        MySingleton.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
     }
 
     private void AlertNews(final String body, final String date,final int position) {

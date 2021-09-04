@@ -176,7 +176,7 @@ public class DaySaleFood extends AppCompatActivity {
         };
         jsonObjReq.setShouldCache(false);
 
-        MySingleton.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
 
     }
 
@@ -216,7 +216,7 @@ public class DaySaleFood extends AppCompatActivity {
             }
         };
 
-        MySingleton.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
     }
 
     private void getid(String data_food , final String place_id) throws JSONException {
@@ -280,7 +280,7 @@ public class DaySaleFood extends AppCompatActivity {
 
        );
 
-        MySingleton.getInstance().addToRequestQueue(check);
+        MainApplication.getInstance().addToRequestQueue(check);
     }
 
     private void DaySaleSubmit(final String diet_id ,final String place_id) {
@@ -304,7 +304,7 @@ public class DaySaleFood extends AppCompatActivity {
 
         );
 
-        MySingleton.getInstance().addToRequestQueue(check);
+        MainApplication.getInstance().addToRequestQueue(check);
     }
 
     private void DoRefreshPage() {

@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.core.content.res.TypedArrayUtils;
 import androidx.appcompat.app.AlertDialog;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -39,8 +38,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import fathi.shakhes.AppSessionManager;
-import fathi.shakhes.JalaliCalendar;
-import fathi.shakhes.MySingleton;
+import fathi.shakhes.helpers.JalaliCalendar;
+import fathi.shakhes.MainApplication;
 import shakhes.R;
 
 public class ReadMessage extends Fragment {
@@ -164,7 +163,7 @@ public class ReadMessage extends Fragment {
             }
         });
 
-        MySingleton.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
     }
     public  void DeleteMessages(String message_id) {
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
@@ -188,7 +187,7 @@ public class ReadMessage extends Fragment {
             }
         });
 
-        MySingleton.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
     }
     private void AlertNews(String body, String date) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(

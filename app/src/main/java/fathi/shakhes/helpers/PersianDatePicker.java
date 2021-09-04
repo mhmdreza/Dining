@@ -1,4 +1,4 @@
-package fathi.shakhes;
+package fathi.shakhes.helpers;
 
 import android.content.Context;
 import android.content.res.TypedArray;

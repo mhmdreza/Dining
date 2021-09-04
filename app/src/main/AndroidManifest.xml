@@ -29,7 +29,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="fathi.shakhes.SplashScreen"
+            android:name="fathi.shakhes.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>

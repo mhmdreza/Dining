@@ -23,6 +23,7 @@ import com.sdsmdg.tastytoast.TastyToast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import fathi.shakhes.helpers.Internet;
 import shakhes.R;
 
 public class LoginFood extends AppCompatActivity {
@@ -81,7 +82,7 @@ public class LoginFood extends AppCompatActivity {
             }) ;
 
 // Adding request to request queue
-        MySingleton.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
     }
     private void getFoodData(String acc, final String stunum) {
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
@@ -146,7 +147,7 @@ public class LoginFood extends AppCompatActivity {
 //        };
 
 // Adding request to request queue
-        MySingleton.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
     }
     private void ui() {
         typeFace = Typeface.createFromAsset(getAssets(), "fonts/IRANSans.ttf");
@@ -237,7 +238,7 @@ public class LoginFood extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // Disable going back to the MainActivity
-        Intent BackToMain = new Intent(LoginFood.this, SplashScreen.class);
+        Intent BackToMain = new Intent(LoginFood.this, SplashActivity.class);
         startActivity(BackToMain);
         finish();
     }

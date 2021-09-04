@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/iron"
-    tools:context="fathi.shakhes.SplashScreen">
+    tools:context="fathi.shakhes.SplashActivity">
 
     <ImageView
         android:id="@+id/imageView3"

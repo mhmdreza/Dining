@@ -29,6 +29,8 @@ import org.json.JSONObject;
 import java.util.Date;
 import java.util.TimeZone;
 
+import fathi.shakhes.helpers.Internet;
+import fathi.shakhes.helpers.JalaliCalendar;
 import shakhes.R;
 
 public class SingleNewsActivity extends AppCompatActivity {
@@ -117,7 +119,7 @@ public class SingleNewsActivity extends AppCompatActivity {
                     }
                 }, Throwable::printStackTrace);
 
-        MySingleton.getInstance().addToRequestQueue(jsonObjReq);
+        MainApplication.getInstance().addToRequestQueue(jsonObjReq);
     }
 
     public Date getDateTimeFromTimestamp(Long value) {
