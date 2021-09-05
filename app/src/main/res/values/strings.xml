@@ -346,9 +346,15 @@
     <string name="tab1">بخش مالی</string>
     <string name="tab2">حساب کاربری</string>
     <string name="tab3">لیست کتاب ها</string>
-
-
-
+    <string name="developed_by">Developed By Mohamad Reza Jafarzade</string>
+    <string name="dining_system">سامانه رزرو غذا دانشگاه صنعتی شریف</string>
+    <string name="enter_dining">ورود به سامانه تغذیه</string>
+    <string name="student_num">شماره دانشجویی</string>
+    <string name="remember_me">مرا به خاطر بسپار</string>
+    <string name="password_text">گذرواژه</string>
+    <string name="enter">ورود</string>
+    <string name="no_internet_access">به اینترنت دسترسی ندارید!</string>
+    <string name="login_loading">در حال ورود...</string>
 
 
     <string-array name="spinner_mehman_1">

@@ -13,51 +13,50 @@ const val KEY_USERNAME = "username"
 const val KEY_ACCESS_TOKEN = "access_token"
 const val FOOD_USERNAME = "fusername"
 const val FOOD_ACC_T = "facc"
-const val FOOD_STUNUM = "fstunum"
 const val FOOD_FNAME = "ffname"
 const val FOOD_LNAME = "flname"
 const val FOOD_ACC = "faccount"
-const val FOOD_USER = "dininguser"
 const val FOOD_PASS = "diningpass"
-const val FOOD_CHECKED = "ischecked_food"
-const val IS_ACCOUNT_NEGATIVE = "IS_ACCOUNT_NEGATIVE"
+const val SAVE_LOGIN_DATA = "saveLoginData"
+const val IS_ACCOUNT_NEGATIVE = "isAccountNegative"
 
 object AppSharedPreferences {
     private val pref: SharedPreferences by lazy {
         getAppContext().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
     }
 
-    fun createFoodLoginSession(username: String?, acc: String?) {
+    fun createFoodLoginSession(
+        username: String,
+        password: String,
+        accessToken: String
+    ) {
         pref.edit {
-            putString(FOOD_USERNAME, username)
-            putString(FOOD_STUNUM, username)
-            putString(FOOD_ACC_T, acc)
+            putString(FOOD_ACC_T, accessToken)
+            if (shouldSaveLoginData) {
+                putString(FOOD_USERNAME, username)
+                putString(FOOD_PASS, password)
+            }
         }
     }
 
-    fun saveuserfood(t: String?) {
-        pref.edit {
-            putString(FOOD_USER, t)
+
+    val username
+        get() = pref.getString(FOOD_USERNAME, "")
+
+
+    val password
+        get() = pref.getString(FOOD_PASS, "")
+
+    val accessToken: String
+        get() = pref.getString(FOOD_ACC_T, "") ?: ""
+
+    var shouldSaveLoginData: Boolean
+        get() = true
+        set(value) {
+            pref.edit {
+                putBoolean(SAVE_LOGIN_DATA, value)
+            }
         }
-    }
-
-    fun getuserfood() = pref.getString(FOOD_USER, "")
-
-    fun savepassfood(t: String?) {
-        pref.edit {
-            putString(FOOD_PASS, t)
-        }
-    }
-
-    fun getpassfood() = pref.getString(FOOD_PASS, "")
-
-    fun setcheckboxstate_food(b: Boolean) {
-        pref.edit {
-            putBoolean(FOOD_CHECKED, b)
-        }
-    }
-
-    fun getcheckboxstate_food() = pref.getBoolean(FOOD_CHECKED, false)
 
     fun insertFoodProfileData(fname: String?, lname: String?, stunum: String?, account: String?) {
         val formatter = DecimalFormat("#,###")
@@ -68,7 +67,6 @@ object AppSharedPreferences {
             putString(FOOD_ACC, accountNumber)
             putString(FOOD_FNAME, fname)
             putString(FOOD_LNAME, lname)
-            putString(FOOD_STUNUM, stunum)
         }
     }
 
@@ -77,14 +75,13 @@ object AppSharedPreferences {
             val ret = arrayOfNulls<String>(4)
             ret[0] = pref.getString(FOOD_FNAME, "")
             ret[1] = pref.getString(FOOD_LNAME, "")
-            ret[2] = pref.getString(FOOD_STUNUM, "")
+            ret[2] = pref.getString(FOOD_USERNAME, "")
             ret[3] = pref.getString(FOOD_ACC, "")
             return ret
         }
 
     val diningData: HashMap<String?, String?>
         get() = hashMapOf(
-            KEY_USERNAME to pref.getString(FOOD_USERNAME, null),
             KEY_ACCESS_TOKEN to pref.getString(FOOD_ACC_T, null),
         )
 
@@ -95,7 +92,7 @@ object AppSharedPreferences {
         }
     }
 
-    var isAccountNegative : Boolean
+    var isAccountNegative: Boolean
         get() = pref.getBoolean(IS_ACCOUNT_NEGATIVE, false)
         set(isNegative) {
             pref.edit {

@@ -199,30 +199,20 @@ public class FoodActivity extends AppCompatActivity {
     public void getPicture() {
         final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
                 url_food_picture + token, null,
-                new Response.Listener<JSONObject>() {
+                response -> {
 
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        try {
-                            if(response.getBoolean("success") == true){
-                                byte[] decodedString = Base64.decode(response.getString("picture"), Base64.DEFAULT);
-                                decodedBytePicture = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                                image.setImageBitmap(Bitmap.createScaledBitmap(decodedBytePicture,decodedBytePicture.getWidth(),decodedBytePicture.getHeight(),false));
-                                image.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT));
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                    try {
+                        if(response.getBoolean("success") == true){
+                            byte[] decodedString = Base64.decode(response.getString("picture"), Base64.DEFAULT);
+                            decodedBytePicture = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                            image.setImageBitmap(Bitmap.createScaledBitmap(decodedBytePicture,decodedBytePicture.getWidth(),decodedBytePicture.getHeight(),false));
+                            image.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT));
                         }
-                    }
-                }, new Response.ErrorListener() {
 
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        })
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }, error -> error.printStackTrace())
         {
 
             @Override

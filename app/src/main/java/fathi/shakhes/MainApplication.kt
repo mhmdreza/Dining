@@ -21,25 +21,26 @@ class MainApplication : Application() {
         instance = this
     }
 
-    private val requestQueue: RequestQueue?
+    private val requestQueue: RequestQueue
         get() {
             if (mRequestQueue == null) {
                 mRequestQueue = Volley.newRequestQueue(applicationContext)
             }
-            cache = mRequestQueue!!.cache
-            cache?.initialize()
-            return mRequestQueue
+            cache = mRequestQueue!!.cache.apply {
+                initialize()
+            }
+            return mRequestQueue!!
         }
 
     fun <T> addToRequestQueue(req: Request<T>, tag: String?) {
         // set the default tag if tag is empty
         req.tag = if (TextUtils.isEmpty(tag)) TAG else tag
-        requestQueue!!.add(req)
+        requestQueue.add(req)
     }
 
     fun <T> addToRequestQueue(req: Request<T>) {
         req.tag = TAG
-        requestQueue!!.add(req)
+        requestQueue.add(req)
     }
 
     companion object {

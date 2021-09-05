@@ -1,75 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/iron"
-    tools:context="fathi.shakhes.MainActivity">
+    tools:context="fathi.shakhes.fragments.SplashFragment">
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/logoImage"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_marginTop="10dp"
-        android:layout_weight="5"
-        android:src="@drawable/logo" />
+        android:contentDescription="@null"
+        android:src="@drawable/logo"
+        app:layout_constraintVertical_bias=".2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/textView2"
-        android:layout_weight="8"
-        android:gravity="center"
-        android:text="شاخص"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="40dp"
-        tools:text="شاخص" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/textView3"
-        android:layout_centerHorizontal="true"
-        android:layout_weight="7"
-        android:gravity="center"
-        android:inputType="textMultiLine"
-        android:lines="2"
-        android:text="شبکه اطلاع رسانی و خدمات دانشجویی دانشگاه صنعتی شریف"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        tools:text="شبکه اطلاع رسانی و خدمات دانشجویی دانشگاه صنعتی شریف" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/textView5"
-        android:layout_centerHorizontal="true"
-        android:layout_weight="8"
-        android:gravity="center"
-        android:text="کلیه حقوق این نرم افزار متعلق به مدیریت امور دانشجویی دانشگاه صنعتی شریف می باشد."
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="8sp"
-        tools:text="کلیه حقوق این نرم افزار متعلق به مدیریت امور دانشجویی دانشگاه صنعتی شریف می باشد." />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/dining_system"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintBottom_toTopOf="@id/textView5"
+        app:layout_constraintTop_toBottomOf="@id/logoImage" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_weight="8"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/developed_by"
+        android:textColor="@android:color/black"
         android:gravity="center"
-        android:text="Developed By Amir Fathi"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="7dp"
-        tools:text="Developed By Amir Fathi" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

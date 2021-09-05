@@ -1,4 +1,4 @@
-package fathi.shakhes.helpers
+package fathi.shakhes.fragments
 
 import fathi.shakhes.base.BaseFragment
 import shakhes.R

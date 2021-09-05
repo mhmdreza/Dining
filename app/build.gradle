@@ -9,9 +9,8 @@ android {
     buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "fathi.shakhes"
-        minSdkVersion 14
+        minSdkVersion 19
         targetSdkVersion 30
-        multiDexEnabled = true
         versionCode 1
         versionName "1.0"
         javaCompileOptions {
@@ -47,6 +46,7 @@ dependencies {
     })
     //noinspection GradleCompatible
     testImplementation 'junit:junit:4.12'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     annotationProcessor  'com.jakewharton:butterknife:7.0.1'
     implementation 'com.jakewharton:butterknife:7.0.1'
     implementation 'com.android.volley:volley:1.2.1'
@@ -57,10 +57,10 @@ dependencies {
     implementation 'com.android.volley:volley:1.2.1'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.uncopt:android.justified:1.0'
-    implementation 'androidx.multidex:multidex:2.0.0'
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'it.sephiroth.android.exif:library:+'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation 'it.sephiroth.android.exif:library:1.0.1'
     implementation "androidx.core:core-ktx:1.6.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
@@ -70,6 +70,10 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+
+    implementation("com.squareup.okhttp3:okhttp:4.6.0")
+    implementation("com.squareup.okhttp3:okhttp-urlconnection:4.6.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.6.0")
 
     implementation "androidx.fragment:fragment-ktx:1.4.0-alpha03"
 }
