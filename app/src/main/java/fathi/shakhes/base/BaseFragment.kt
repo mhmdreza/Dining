@@ -1,10 +1,11 @@
 package fathi.shakhes.base
 
-import android.os.Bundle
+import android.content.Intent
 import androidx.fragment.app.Fragment
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import fathi.shakhes.MainActivity
 
 abstract class BaseFragment : Fragment {
+
     constructor() : super()
     constructor(contentLayoutId: Int) : super(contentLayoutId)
 }
@@ -17,13 +18,11 @@ fun Fragment.openFragment(fragment: Fragment, addToBackStack: Boolean) {
     activity?.openFragment(fragment, addToBackStack)
 }
 
-fun Fragment.openBottomSheet(bottomSheetDialogFragment: BottomSheetDialogFragment) {
-    if (activity == null || activity?.isFinishing == true) return
-
-    bottomSheetDialogFragment.show(parentFragmentManager, "bottomSheet")
-}
-
-
-fun Fragment.setSupportFragmentResult(requestKey: String, result: Bundle = Bundle()) {
-    activity?.supportFragmentManager?.setFragmentResult(requestKey, result)
+fun BaseFragment.runMain() {
+    context?.let {
+        Intent(activity, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+            it.startActivity(this)
+        }
+    }
 }

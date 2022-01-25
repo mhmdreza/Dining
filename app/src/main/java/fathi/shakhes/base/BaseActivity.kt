@@ -19,9 +19,3 @@ fun Activity.openFragment(fragment: Fragment, addToBackStack: Boolean) {
     }
     transaction.commit()
 }
-
-fun Activity.openBottomSheet(bottomSheetDialogFragment: BottomSheetDialogFragment) {
-    if (this !is AppCompatActivity || isFinishing) return
-
-    bottomSheetDialogFragment.show(supportFragmentManager, "bottomSheet")
-}

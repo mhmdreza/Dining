@@ -1,12 +1,13 @@
 package fathi.shakhes.connections
 
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 private const val TIMEOUT_SECONDS = 25L
-const val BASE_URL: String = ""
+const val BASE_URL: String = "https://dining.sharif.ir/api/"
 
 object RetrofitBuilder {
 
@@ -15,8 +16,9 @@ object RetrofitBuilder {
             .connectTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
             .readTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
             .writeTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
-            .addInterceptor(HeaderInterceptor())
-
+            .addInterceptor(HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        })
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(builder.build())

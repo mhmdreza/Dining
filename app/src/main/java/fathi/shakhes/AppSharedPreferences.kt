@@ -5,18 +5,14 @@ import android.content.SharedPreferences
 import androidx.core.content.edit
 import fathi.shakhes.MainApplication.Companion.getAppContext
 import java.text.DecimalFormat
-import java.util.HashMap
 
 
 private const val PREF_NAME = "ShakhesPrefs"
-const val KEY_USERNAME = "username"
-const val KEY_ACCESS_TOKEN = "access_token"
-const val FOOD_USERNAME = "fusername"
-const val FOOD_ACC_T = "facc"
-const val FOOD_FNAME = "ffname"
-const val FOOD_LNAME = "flname"
-const val FOOD_ACC = "faccount"
-const val FOOD_PASS = "diningpass"
+const val USERNAME = "username"
+const val PASSWORD = "password"
+const val FULL_NAME = "fullName"
+const val ACCESS_TOKEN = "accessToken"
+const val BALANCE = "balance"
 const val SAVE_LOGIN_DATA = "saveLoginData"
 const val IS_ACCOUNT_NEGATIVE = "isAccountNegative"
 
@@ -31,24 +27,24 @@ object AppSharedPreferences {
         accessToken: String
     ) {
         pref.edit {
-            putString(FOOD_ACC_T, accessToken)
+            putString(ACCESS_TOKEN, accessToken)
             if (shouldSaveLoginData) {
-                putString(FOOD_USERNAME, username)
-                putString(FOOD_PASS, password)
+                putString(USERNAME, username)
+                putString(PASSWORD, password)
             }
         }
     }
 
 
     val username
-        get() = pref.getString(FOOD_USERNAME, "")
+        get() = pref.getString(USERNAME, "")
 
 
     val password
-        get() = pref.getString(FOOD_PASS, "")
+        get() = pref.getString(PASSWORD, "")
 
     val accessToken: String
-        get() = pref.getString(FOOD_ACC_T, "") ?: ""
+        get() = pref.getString(ACCESS_TOKEN, "") ?: ""
 
     var shouldSaveLoginData: Boolean
         get() = true
@@ -58,37 +54,25 @@ object AppSharedPreferences {
             }
         }
 
-    fun insertFoodProfileData(fname: String?, lname: String?, stunum: String?, account: String?) {
+    fun insertFoodProfileData(firstName: String, lastName: String, balance: Int) {
         val formatter = DecimalFormat("#,###")
-        val account1 = account?.toFloatOrNull() ?: 0f
-        isAccountNegative = account1 < 0
-        val accountNumber = formatter.format(account1)
+        isAccountNegative = balance < 0
         pref.edit {
-            putString(FOOD_ACC, accountNumber)
-            putString(FOOD_FNAME, fname)
-            putString(FOOD_LNAME, lname)
+            putInt(BALANCE, balance)
+            putString(FULL_NAME, "$firstName $lastName")
         }
     }
 
-    val foodProfileData: Array<String?>
-        get() {
-            val ret = arrayOfNulls<String>(4)
-            ret[0] = pref.getString(FOOD_FNAME, "")
-            ret[1] = pref.getString(FOOD_LNAME, "")
-            ret[2] = pref.getString(FOOD_USERNAME, "")
-            ret[3] = pref.getString(FOOD_ACC, "")
-            return ret
-        }
+    val fullName: String
+        get() = pref.getString(FULL_NAME, "") ?: ""
 
-    val diningData: HashMap<String?, String?>
-        get() = hashMapOf(
-            KEY_ACCESS_TOKEN to pref.getString(FOOD_ACC_T, null),
-        )
+    val balance: Int
+        get() = pref.getInt(BALANCE, 0)
+
 
     fun logoutDining() {
         pref.edit {
-            remove("data_food_json")
-            remove("data_food_temp")
+            remove(ACCESS_TOKEN)
         }
     }
 

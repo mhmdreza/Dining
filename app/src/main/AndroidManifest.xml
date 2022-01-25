@@ -38,36 +38,5 @@
             </intent-filter>
         </activity>
 
-
-        <activity
-            android:name="fathi.shakhes.LoginFragment"
-            android:screenOrientation="portrait"
-            android:theme="@style/BlackTheme" />
-
-        <activity
-            android:name="fathi.shakhes.FoodActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="fathi.shakhes.ContactUsActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="fathi.shakhes.FoodListActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="fathi.shakhes.FoodTableTab.TabTable"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="fathi.shakhes.DaySaleFood"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="fathi.shakhes.FoodMessageTab.TabMessage"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="fathi.shakhes.SingleNewsActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-
     </application>
 </manifest>

@@ -44,6 +44,12 @@
     <color name="top_restaurants_text_color">#FF3D00</color>
     <color name="top_breweries_text_color">#3D5AFE</color>
     <color name="top_bars_nightlife_text_color">#FF9100</color>
+    <color name="colorBackgroundDisable">#1F0C1826</color>
+    <color name="textColorPrimaryInverse">#FFFFFF</color>
+    <color name="textColorDisable">#610C1826</color>
+    <color name="iconColorDisable">#E0E0E0</color>
+    <color name="iconColorHighlight">#0800B6</color>
+    <color name="textColorHighlight">#0800B6</color>
 
 
 </resources>

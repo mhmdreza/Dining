@@ -251,8 +251,8 @@
     <string name="title_activity_details">DetailsActivity</string>
       <string name="action_settings">Settings</string>
     <string name="FoodTableTab1">رزروها</string>
-    <string name="FoodTableTab2">برنامه هفتگی</string>
-    <string name="FoodTableTab3">برنامه هفته آینده</string>
+    <string name="FoodTableTab2">هفته جاری</string>
+    <string name="FoodTableTab3">هفته آینده</string>
 
 
     <string name="Spinner_title">برنامه هفته آینده</string>
@@ -354,8 +354,11 @@
     <string name="password_text">گذرواژه</string>
     <string name="enter">ورود</string>
     <string name="no_internet_access">به اینترنت دسترسی ندارید!</string>
-    <string name="login_loading">در حال ورود...</string>
-
+    <string name="login_loading">در حال ورود…</string>
+    <string name="confirmation_close_app_description" translatable="false">آیا می‌خواهید از برنامه خارج شوید؟</string>
+    <string name="confirmation_close_app_title" translatable="false">خروج از برنامه</string>
+    <string name="day_sale">روز خرید</string>
+    <string name="sending_message_error">مشکلی درارسال پیام پیش آمده است</string>
 
     <string-array name="spinner_mehman_1">
         <item>پدر</item>
