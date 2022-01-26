@@ -85,7 +85,7 @@ class MainFragment : BaseFragment(R.layout.fragment_main) {
         val decodedString = Base64.decode(picture.picture, Base64.DEFAULT)
 
         BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)?.let {
-            image.setImageBitmap(Bitmap.createScaledBitmap(it, it.width, it.height, false))
+            image.setImageBitmap(Bitmap.createScaledBitmap(it, image.width, image.height, false))
             image.layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT,WRAP_CONTENT)
         }
     }

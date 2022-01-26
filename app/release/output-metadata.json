@@ -5,7 +5,7 @@
     "kind": "Directory"
   },
   "applicationId": "fathi.shakhes",
-  "variantName": "processReleaseResources",
+  "variantName": "release",
   "elements": [
     {
       "type": "SINGLE",
